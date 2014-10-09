@@ -1,0 +1,25 @@
+#######################################################################
+# SBT Application launcher configuration
+#######################################################################
+[scala]
+  version: 2.10.4
+
+[app]
+  org: uk.co.randomcoding
+  name: cucumberdemo-launcher
+  version: 1.0-SNAPSHOT
+  class: uk.co.randomcoding.cucumberdemo.Launcher
+  components: cucumberdemo-launcher
+  resources: ./conf
+  cross-versioned: binary
+
+[repositories]
+  # publishLocal first
+  local
+
+[boot]
+  # Where the downloaded libraries get stored
+  directory: ./app-libs
+
+[log]
+  level: info

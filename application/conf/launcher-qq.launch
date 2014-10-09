@@ -1,0 +1,34 @@
+#######################################################################
+# SBT Application launcher configuration
+#######################################################################
+[scala]
+  version: 2.10.4
+
+[app]
+  org: uk.co.randomcoding
+  name: cucumberdemo-launcher
+  version: 1.0-SNAPSHOT
+  class: uk.co.randomcoding.cucumberdemo.Launcher
+  components: cucumberdemo-launcher
+  resources: ./conf
+  cross-versioned: binary
+
+[repositories]
+  # publishLocal first
+  local
+  # Check the main repos on artifactory
+  Artifactory-Ivy: http://yum/artifactory/ivy-repos
+  Artifactory-Maven: http://yum/artifactory/mvn-repos
+  Artifactory-Remote: http://yum/artifactory/remote-repos
+  # Look for Sybard artifacts
+  Artifactory-SyBard-Release: http://yum/artifactory/libs-release
+  Artifactory-SyBard-Snapshot: http://yum/artifactory/libs-shapshots
+  # Plugin repos
+  Artifactory-Ivy-Plugins: http://yum/artifactory/ivy-repos, [organization]/[module]/(scala_[scalaVersion]/)(sbt_[sbtVersion]/)[revision]/[type]s/[artifact](-[classifier]).[ext]
+
+[boot]
+  # Where the downloaded libraries get stored
+  directory: ./app-libs
+
+[log]
+  level: info
